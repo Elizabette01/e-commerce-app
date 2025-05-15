@@ -1,6 +1,30 @@
+/* Google font import */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* tailwind css */
 @import "tailwindcss";
+
+
 
 a.active {
   color: #c782a4;
   font-weight: 700;
 }
+
+*{
+  font-family: "Outfit", sans-serif;
+}
+
+/* .bg-img {
+  background:  url(./assets/hero_img.jpg) no-repeat center/contain, linear-gradient(90deg, #f6ccb3, #d7ad90);
+} */
+
+.bg-img {
+  background: url(./assets/hero_img.jpg) no-repeat center/cover;
+} 
+
+.hero-h1 {
+    font-family: "Raleway", sans-serif;
+}
+

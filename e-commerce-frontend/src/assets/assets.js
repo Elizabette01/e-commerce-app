@@ -72,22 +72,17 @@ import stripe_logo from './stripe_logo.png'
 export const assets = {
     logo,
     hero_img,
-    cart_icon,
-    dropdown_icon,
     exchange_icon,
     profile_icon,
     quality_icon,
-    search_icon,
     star_dull_icon,
     star_icon,
     bin_icon,
     support_img,
-    menu_icon,
     about_img,
     contact_img,
     razorpay_logo,
-    stripe_logo,
-    cross_icon
+    stripe_logo
 }
 
 export const productImg = {

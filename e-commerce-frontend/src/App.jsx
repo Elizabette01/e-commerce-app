@@ -13,7 +13,7 @@ import NavBar from './components/NavBar';
 
 const App = () => {
   return (
-    <div className='w-[90%] mx-auto'>
+    <div className=''>
 
       <NavBar />
       <Routes>
