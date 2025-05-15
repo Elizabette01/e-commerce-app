@@ -4,12 +4,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaSearch, FaUserCircle, FaShoppingBag } from "react-icons/fa";
 import { RiMenu3Fill, RiCloseLargeLine  } from "react-icons/ri";
 
-const Menu = () => {
-  <>
-    
-  </>
-}
-
 const NavBar = () => {
 
   const [toggleMenu, setToggleMenu] = useState(false);
