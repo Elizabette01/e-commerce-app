@@ -9,11 +9,13 @@ import Order from './Pages/Order';
 import Login from './Pages/login';
 import Categories from './Pages/Categories';
 import Contact from './Pages/contact';
+import NavBar from './components/NavBar';
 
 const App = () => {
   return (
-    <div>
+    <div className='w-[90%] mx-auto'>
 
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
