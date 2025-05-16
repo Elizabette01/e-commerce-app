@@ -24,6 +24,10 @@ a.active {
   background: url(./assets/hero_img.jpg) no-repeat center/cover;
 } 
 
+.bg-img {
+  background: url(./assets/hero_img.jpg) no-repeat center/cover;
+} 
+
 .hero-h1 {
     font-family: "Raleway", sans-serif;
 }
