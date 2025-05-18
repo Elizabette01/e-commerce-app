@@ -41,10 +41,10 @@ const NavBar = () => {
         <RiMenu3Fill className='text-sm md:text-xl cursor-pointer hover:text-[#c782a4] md:hidden' onClick={()=> {setToggleMenu(true)}} />
 
           {toggleMenu && (
-            <div className='fixed top-0 right-0 bottom-0 overflow-hidden bg-gray-100 transition-all duration-300 py-5 px-5 flex flex-col gap-5'>
+            <div className='fixed inset-0 overflow-hidden bg-gray-100 transition-all duration-300 py-5 px-5 flex flex-col gap-5'>
               <RiCloseLargeLine className='text-2xl absolute right-5 hover:text-[#c782a4]' onClick={()=> {setToggleMenu(false)}} />
-              <div className='flex flex-col w-full h-full gap-5 text-md text-gray-700 mt-24'>
-                <NavLink to='/' className='uppercase'>Home</NavLink>
+              <div className='flex flex-col w-full h-full gap-5 text-md text-gray-700 mt-24' onClick={()=> {setToggleMenu(false)}}>
+                <NavLink to='/' className='uppercase' >Home</NavLink>
                 <NavLink to='/categories' className='uppercase'>Categories</NavLink>
                 <NavLink to='/about' className='uppercase'>About</NavLink>
                 <NavLink to='/contact' className='uppercase'>Contact</NavLink>
