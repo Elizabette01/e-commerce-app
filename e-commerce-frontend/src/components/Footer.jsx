@@ -7,7 +7,7 @@ import { FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <div className='bg-gray-100'>
-      <div className="flex flex-col sm:grid grid-cols-[1.5fr_1fr_1fr] gap-14 pt-24 text-sm w-[90%] mx-auto">
+      <div className="flex flex-col sm:grid grid-cols-[1.5fr_1fr_1fr] gap-14 pt-14 text-sm w-[90%] mx-auto">
         <div>
           <img src={assets.logo} alt="Company Logo" className="w-32 mb-5" />
           <p className="w-full text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum temporibus quas, possimus quos dolorem dicta id? Facere, ipsam quibusdam, itaque sequi omnis accusamus quidem.</p>
