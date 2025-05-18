@@ -11,6 +11,20 @@ const Categories = () => {
   const [filterMenu, setFilterMenu] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
 
+  const [category, setCategory] = useState([]);
+  const [subcategory, setSubcategory] = useState([]);
+
+  // Function to filter the products based on categories
+  const toggleCategory = (e) => {
+
+    if (category.includes(e.target.value)) {
+      setCategory(prev => prev.filter(item => item !== e.target.value))
+    }
+    else(
+      setCategory(prev => (...prev, e.target.value))
+    )
+  };
+
   useEffect(() =>{
     setFilterProducts(products)
   }, [products])
@@ -19,7 +33,7 @@ const Categories = () => {
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 py-10 border-t w-[90%] mx-auto'>
 
       {/* Filter Options */}
-      <div className="min-w-60">
+      <div className="min-w-60 sticky top-1">
         <p className="my-2 text-xl flex items-center cursor-pointer" onClick={()=> {setFilterMenu(!filterMenu)}} >FILTERS 
           <MdOutlineArrowDropDown className={`text-2xl sm:hidden ${filterMenu ? 'rotate-180' : ''} transition-all duration-300`}/>
         </p>
@@ -85,7 +99,7 @@ const Categories = () => {
           <div className="flex items-center">
             <p className="text-sm">Sort by:</p>
 
-            <select className=" text-sm px-2">
+            <select className=" text-sm px-2 outline-0">
               <option value="relevant" className="">Relevant</option>
               <option value="low-high" className="">Low to High</option>
               <option value="high-low" className="">High to Low</option>
