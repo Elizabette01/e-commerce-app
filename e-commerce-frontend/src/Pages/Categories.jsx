@@ -101,7 +101,7 @@ const Categories = () => {
 
 
   return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 py-10 border-t w-[90%] mx-auto'>
+    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 py-10 w-[90%] mx-auto'>
 
       {/* Filter Options */}
       <div className="min-w-60 sticky top-1">

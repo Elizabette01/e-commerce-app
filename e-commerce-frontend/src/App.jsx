@@ -11,12 +11,14 @@ import Categories from './Pages/Categories';
 import Contact from './Pages/contact';
 import NavBar from './components/NavBar';
 import Footer from './components/footer';
+import SearchBar from './components/SearchBar';
 
 const App = () => {
   return (
     <div className=''>
 
       <NavBar />
+      <SearchBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />

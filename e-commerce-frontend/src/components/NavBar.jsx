@@ -1,11 +1,13 @@
-import { React, useState } from 'react';
+import { React, useContext, useState } from 'react';
 import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
 import { FaSearch, FaUserCircle, FaShoppingBag } from "react-icons/fa";
 import { RiMenu3Fill, RiCloseLargeLine  } from "react-icons/ri";
+import { ShopContext } from '../context/ShopContext';
 
 const NavBar = () => {
 
+  const { setShowSearch } = useContext(ShopContext)
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
@@ -20,7 +22,7 @@ const NavBar = () => {
       </div>
 
       <div className='flex items-center justify-end gap-3 md:gap-5 :w-36'>
-        <FaSearch className='cursor-pointer text-sm md:text-xl '/>
+        <FaSearch className='cursor-pointer text-sm md:text-xl ' onClick={()=> {setShowSearch(true)}}/>
 
         <div className='group relative'>
           <FaUserCircle className='cursor-pointer text-sm md:text-xl'/>
