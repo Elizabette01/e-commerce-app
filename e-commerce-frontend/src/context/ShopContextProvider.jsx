@@ -1,11 +1,16 @@
 import { ShopContext } from './ShopContext';
 import {products} from '../assets/assets';
+import { useState } from 'react';
 
 const ShopContextProvider = (props) => {
 
-  const currency = '£'
+  const currency = '£';
+  const [search, setSearch] = useState('');
+  const [showSearch, setShowSearch] = useState(true);
+
+
   const value = {
-    products, currency
+    products, currency, search, setSearch, showSearch, setShowSearch
   }
 
   return (
