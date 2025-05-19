@@ -12,22 +12,62 @@ const Categories = () => {
   const [filterProducts, setFilterProducts] = useState([]);
 
   const [category, setCategory] = useState([]);
-  const [subcategory, setSubcategory] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
 
   // Function to filter the products based on categories
+
+  // the function updates the categories array to include the value of the checked category, and remove it if unchecked
   const toggleCategory = (e) => {
 
-    if (category.includes(e.target.value)) {
-      setCategory(prev => prev.filter(item => item !== e.target.value))
+    const eValue = e.target.value;
+
+    if (category.includes(eValue)) {
+      setCategory(prev => prev.filter(item => item !== eValue))
     }
     else(
-      setCategory(prev => (...prev, e.target.value))
+      setCategory(prev => [...prev,eValue])
     )
   };
 
+  // the function updates the subcategories array to include the value of the checked subcategory, and remove it if unchecked
+  const toggleSubCategory = (e) => {
+
+    const eValue = e.target.value;
+
+    if (subCategory.includes(eValue)) {
+      setSubCategory(prev => prev.filter(item => item !== eValue))
+    }
+    else(
+      setSubCategory(prev => [...prev,eValue])
+    )
+  };
+
+  /*
+   The function updates the product array to include all products
+   then filters the array to check if the item's category is included in the categorie array
+   it then updates he productscopy array based on the filter result
+   finally it updates the filter products array with the result of the filtered productsCopy
+  */
+
+  const applyFilter = () => {
+
+    let productsCopy = products.slice();
+
+    if (category.length > 0) {
+      productsCopy = productsCopy.filter(item => category.includes(item.category))
+    }
+
+    setFilterProducts(productsCopy)
+  }
+
   useEffect(() =>{
     setFilterProducts(products)
-  }, [products])
+  }, [])
+
+  useEffect(() =>{
+    applyFilter()
+  }, [category, subCategory])
+
 
   return (
     <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 py-10 border-t w-[90%] mx-auto'>
@@ -44,9 +84,9 @@ const Categories = () => {
           <p className="mb-3 text-sm font-medium">CATEGORIES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
 
-            <Filter value={'Men'}/>
-            <Filter value={'Women'}/>
-            <Filter value={'Children'}/>
+            <Filter value={'Men'} fnx={toggleCategory} />
+            <Filter value={'Women'} fnx={toggleCategory} />
+            <Filter value={'Children'} fnx={toggleCategory} />
             
             {/* <p className="flex gap-2">
               <input type="checkbox" className='w-3' value={'Men'} /> Men
@@ -69,9 +109,9 @@ const Categories = () => {
           <p className="mb-3 text-sm font-medium">TYPE</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
 
-            <Filter value={'Topwear'}/>
-            <Filter value={'Bottomwear'}/>
-            <Filter value={'Winterwear'}/>
+            <Filter value={'Topwear'} fnx={toggleSubCategory} />
+            <Filter value={'Bottomwear'} fnx={toggleSubCategory} />
+            <Filter value={'Winterwear'} fnx={toggleSubCategory} />
             
             {/* <p className="flex gap-2">
               <input type="checkbox" className='w-3' value={'Topwear'} /> Topwear
