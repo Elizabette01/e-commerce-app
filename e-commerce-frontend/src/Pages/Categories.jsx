@@ -10,6 +10,7 @@ const Categories = () => {
   const { products } = useContext(ShopContext);
   const [filterMenu, setFilterMenu] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
+  const [sortType, setSortType] = useState('relevant')
 
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
@@ -43,10 +44,10 @@ const Categories = () => {
   };
 
   /*
-   The function updates the product array to include all products
+   The function updates the product array to include all products.
    then filters the array to check if the item's category is included in the categorie array
    it then updates he productscopy array based on the filter result
-   finally it updates the filter products array with the result of the filtered productsCopy
+   finally it updates the filter products array with the result of the productsCopy
   */
 
   const applyFilter = () => {
@@ -57,16 +58,46 @@ const Categories = () => {
       productsCopy = productsCopy.filter(item => category.includes(item.category))
     }
 
+    if (subCategory.length > 0) {
+      productsCopy = productsCopy.filter(item => subCategory.includes(item.subCategory))
+    }
+
     setFilterProducts(productsCopy)
   }
 
-  useEffect(() =>{
-    setFilterProducts(products)
-  }, [])
-
+// reloads the page and calls the applyFilter() whenever there is a change in category or subcategory
   useEffect(() =>{
     applyFilter()
   }, [category, subCategory])
+
+  // reloads the page and calls the sortProduct whenever sortType is updated
+  useEffect(() =>{
+    sortProduct()
+  }, [sortType])
+
+
+  /* 
+    Function to sort products
+  */ 
+
+    const sortProduct = () => {
+      let filterProductsCopy = filterProducts.slice();
+
+      switch(sortType) {
+        
+        case 'low-high':
+          setFilterProducts(filterProductsCopy.sort((a,b) => (a.price - b.price)));
+          break;
+
+        case 'high-low':
+          setFilterProducts(filterProductsCopy.sort((a,b) => (b.price - a.price)));
+          break;
+
+        default: 
+          applyFilter();
+          break;
+      }
+    }
 
 
   return (
@@ -139,7 +170,7 @@ const Categories = () => {
           <div className="flex items-center">
             <p className="text-sm">Sort by:</p>
 
-            <select className=" text-sm px-2 outline-0">
+            <select className=" text-sm px-2 outline-0" onChange={(e) => setSortType(e.target.value)}>
               <option value="relevant" className="">Relevant</option>
               <option value="low-high" className="">Low to High</option>
               <option value="high-low" className="">High to Low</option>
