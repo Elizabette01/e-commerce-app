@@ -178,7 +178,7 @@ const Categories = () => {
               <option value="relevant" className="">Relevant</option>
               <option value="low-high" className="">Low to High</option>
               <option value="high-low" className="">High to Low</option>
-          </select>
+            </select>
           </div>
          
         </div>
