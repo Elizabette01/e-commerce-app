@@ -7,7 +7,7 @@ import ProductCard from '../components/ProductCard';
 
 const Categories = () => {
 
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
   const [filterMenu, setFilterMenu] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [sortType, setSortType] = useState('relevant')
@@ -62,13 +62,17 @@ const Categories = () => {
       productsCopy = productsCopy.filter(item => subCategory.includes(item.subCategory))
     }
 
+    if (showSearch && search) {
+      productsCopy = productsCopy.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    }
+
     setFilterProducts(productsCopy)
   }
 
 // reloads the page and calls the applyFilter() whenever there is a change in category or subcategory
   useEffect(() =>{
     applyFilter()
-  }, [category, subCategory])
+  }, [category, subCategory, search, showSearch])
 
   // reloads the page and calls the sortProduct whenever sortType is updated
   useEffect(() =>{

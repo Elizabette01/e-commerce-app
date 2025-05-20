@@ -22,7 +22,9 @@ const NavBar = () => {
       </div>
 
       <div className='flex items-center justify-end gap-3 md:gap-5 :w-36'>
-        <FaSearch className='cursor-pointer text-sm md:text-xl ' onClick={()=> {setShowSearch(true)}}/>
+         <Link to='/categories' className=''>
+           <FaSearch className='cursor-pointer text-sm md:text-xl ' onClick={()=> {setShowSearch(true)}}/>
+        </Link>
 
         <div className='group relative'>
           <FaUserCircle className='cursor-pointer text-sm md:text-xl'/>

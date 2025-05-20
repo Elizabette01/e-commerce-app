@@ -12,7 +12,7 @@ const SearchBar = () => {
   const location = useLocation();
 
   useEffect(()=> {
-    if (location.pathname.includes('collection')) {
+    if (location.pathname.includes('categories')) {
       setVisible(true)
     }
     else {
@@ -23,10 +23,10 @@ const SearchBar = () => {
   return showSearch && visible ? (
     <div className='bg-gray-50 text-center'>
       <div className="inline-flex items-center justify-center border border-gray-400 rounded-full px-5 py-2 my-5 mx-auto w-3/4 sm:w-1/2">
-        <input type="text" className="flex-1 outline-none bg-inherit text-sm placeholder:text-gray-400" placeholder='Search  Product' onChange={(e) => setSearch(e.target.value)} />
-        <FaSearch className='cursor-pointer text-sm md:text-xl '/>
+        <input type="text" className="flex-1 outline-none bg-inherit text-sm placeholder:text-gray-400" placeholder='Search  Product' value={search} onChange={(e) => setSearch(e.target.value)} />
+        {/* <FaSearch className='cursor-pointer text-sm md:text-xl '/> */}
+        <RiCloseLargeLine className='ml-4 text-xl inline cursor-pointer' onClick={()=> {setShowSearch(false)}} />
       </div>
-      <RiCloseLargeLine className='ml-4 text-xl inline cursor-pointer' onClick={()=> {setShowSearch(false)}} />
     </div>
   ) : null
 }
