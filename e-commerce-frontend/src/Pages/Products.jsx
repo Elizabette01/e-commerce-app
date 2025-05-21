@@ -112,6 +112,8 @@ const Products = () => {
           <p className=""><span className="font-medium">Shipping:</span> Free shipping on orders over £50</p>
         </div>
       </div>
+
+      {/* Related Products */}
     </div>
   ) : <div className="">404: Product not found</div>
 }
