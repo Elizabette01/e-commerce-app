@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
+import RelatedProducts from '../components/RelatedProducts';
 
 const Products = () => {
 
@@ -114,6 +115,9 @@ const Products = () => {
       </div>
 
       {/* Related Products */}
+
+      <RelatedProducts category={productData.categoty} subCategory={productData.subCategory} />
+
     </div>
   ) : <div className="">404: Product not found</div>
 }
