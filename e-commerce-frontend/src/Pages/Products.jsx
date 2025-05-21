@@ -12,6 +12,7 @@ const Products = () => {
   const [image, setImage] = useState('');
   const [size, setSize] = useState('');
 
+
   const fetchProductData = async () => {
 
     products.map((item) => {
@@ -33,7 +34,7 @@ const Products = () => {
       {/* Product data */}
       <div className="flex gap-12 flex-col sm:flex-row">
         {/* Product Images */}
-        <div className="w-1/3 flex flex-col gap-2 ">
+        <div className="w-full sm:w-1/3 flex flex-col gap-2 ">
           <div className="w-full">
             <img src={image} alt="" className="w-full h-auto" />
           </div>
@@ -116,7 +117,7 @@ const Products = () => {
 
       {/* Related Products */}
 
-      <RelatedProducts category={productData.categoty} subCategory={productData.subCategory} />
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory} id={productData._id} />
 
     </div>
   ) : <div className="">404: Product not found</div>
