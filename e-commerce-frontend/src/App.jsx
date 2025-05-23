@@ -1,5 +1,7 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Cart from './Pages/cart';
@@ -17,6 +19,7 @@ const App = () => {
   return (
     <div className=''>
 
+      <ToastContainer />
       <NavBar />
       <SearchBar />
       <Routes>
