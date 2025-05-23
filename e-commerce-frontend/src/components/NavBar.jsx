@@ -7,7 +7,7 @@ import { ShopContext } from '../context/ShopContext';
 
 const NavBar = () => {
 
-  const { setShowSearch } = useContext(ShopContext)
+  const { setShowSearch, getCartCount } = useContext(ShopContext)
   const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
@@ -39,7 +39,7 @@ const NavBar = () => {
 
         <Link to='/cart' className='relative'>
           <FaShoppingBag className='cursor-pointer text-sm md:text-xl' />
-          <p className='absolute w-4 text-center leading-4 aspect-square rounded-full text-[0.5rem] bg-[#c782a4] text-white right-[-5px] bottom-[-7px]'>2</p>
+          <p className='absolute w-4 text-center leading-4 aspect-square rounded-full text-[0.5rem] bg-[#c782a4] text-white right-[-5px] bottom-[-7px]'>{getCartCount()}</p>
         </Link>
 
         <RiMenu3Fill className='text-sm md:text-xl cursor-pointer hover:text-[#c782a4] md:hidden' onClick={()=> {setToggleMenu(true)}} />
