@@ -16,7 +16,10 @@ const ShopContextProvider = (props) => {
   const addToCart = async (itemId, size) => {
 
     if (!size){
-      toast.error('Select a size');
+      toast.error('Select a size', {
+      position: "top-center",
+      autoClose: 2000
+    });
       return;
     }
 
@@ -37,7 +40,10 @@ const ShopContextProvider = (props) => {
     }
 
     setCartItems(cartData);
-    toast.success('Product added to cart');
+    toast.success('Product added to cart', {
+      position: "top-center",
+      autoClose: 2000
+    });
   }
 
   const getCartCount = () => {

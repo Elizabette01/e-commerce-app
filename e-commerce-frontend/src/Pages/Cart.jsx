@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title';
 import { BsTrash3 } from "react-icons/bs";
+import { toast } from 'react-toastify';
 
 const Cart = () => {
 
@@ -30,12 +31,18 @@ const Cart = () => {
   const updateQuantity = (e, item) => {
     e.target.value === '' || e.target.value === '0' ?
     null :
-    updateCart(item._id, item.size, Number(e.target.value))
+    updateCart(item._id, item.size, Number(e.target.value));
+    // toast.success('quantity updated', {
+    //   position: "top-center",
+    //   autoClose: 1000
+    // });
   }
 
-  const deteteItem = () => {
+  // const deleteItem = (item) => {
+
+  //   updateCart(item._id, item.size, 0)
     
-  }
+  // }
 
 
   return (
@@ -62,9 +69,16 @@ const Cart = () => {
                   </div>
                 </div>
                 
-                <input onChange={updateQuantity(e, item)} type="number" min={1} defaultValue={item.quantity}  className='border max-w-10 px-2 py-1'/>
+                <input onChange={(e)=> updateQuantity(e, item)} type="number" min={1} defaultValue={item.quantity}  className='border max-w-10 px-2 py-1'/>
 
-                <BsTrash3  className='cursor-pointer text-sm md:text-xl' />
+                <BsTrash3  className='cursor-pointer text-sm md:text-xl' 
+                  onClick={() => {
+                    updateCart(item._id, item.size, 0);
+                    toast.error('Item removed from cart', {
+                      position: "top-center",
+                      autoClose: 2000
+                    });
+                  }} />
               </div>
             )
           
