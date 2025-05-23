@@ -5,7 +5,7 @@ import { BsTrash3 } from "react-icons/bs";
 
 const Cart = () => {
 
-  const { products, currency, cartItems } = useContext(ShopContext);
+  const { products, currency, cartItems, updateCart } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
@@ -26,6 +26,17 @@ const Cart = () => {
     setCartData(tempData)
 
   }, [cartItems])
+
+  const updateQuantity = (e, item) => {
+    e.target.value === '' || e.target.value === '0' ?
+    null :
+    updateCart(item._id, item.size, Number(e.target.value))
+  }
+
+  const deteteItem = () => {
+    
+  }
+
 
   return (
     <div className='py-10 w-[90%] mx-auto'>
@@ -51,7 +62,7 @@ const Cart = () => {
                   </div>
                 </div>
                 
-                <input type="number" min={1} defaultValue={item.quantity}  className='border max-w-10 px-2 py-1'/>
+                <input onChange={updateQuantity(e, item)} type="number" min={1} defaultValue={item.quantity}  className='border max-w-10 px-2 py-1'/>
 
                 <BsTrash3  className='cursor-pointer text-sm md:text-xl' />
               </div>
